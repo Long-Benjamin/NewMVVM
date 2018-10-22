@@ -17,6 +17,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
     }
 
     signingConfigs {
@@ -119,9 +125,16 @@ dependencies {
 
     //============ dagger
     implementation "com.google.dagger:dagger-android:$dagger"
-    implementation "com.google.dagger:dagger-android-support:$dagger" // if you use the support libraries
-    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger"
+    implementation "com.google.dagger:dagger-android-support:$dagger"
+    // if you use the support libraries
+    kapt "com.google.dagger:dagger-android-processor:$dagger"
+
+    //============ arouter
+    implementation "com.alibaba:arouter-api:$arouter"
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler"
+
 }
+
 
 repositories {
     mavenCentral()
