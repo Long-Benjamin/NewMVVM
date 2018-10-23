@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.ljt.newmvvm.R
 
 
@@ -26,7 +27,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class BlankFragment : Fragment() {
+class BlankFragment : BaseFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -49,22 +50,14 @@ class BlankFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<View>(R.id.bt_jump).setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_blank2Fragment_to_blank3Fragment)
+//            Navigation.findNavController(it).navigate()
+            NavHostFragment.findNavController(this).navigate(R.id.action_blankFragment_to_blank2Fragment)
         }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }
     }
 
     override fun onDetach() {

@@ -1,13 +1,19 @@
 package com.ljt.newmvvm.ui.home
 
+import android.arch.lifecycle.ViewModel
 import android.content.Context
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.NavHostFragment
 import com.ljt.newmvvm.R
+import com.ljt.newmvvm.databinding.FragmentBlank2Binding
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,11 +30,13 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class Blank2Fragment : Fragment() {
-    // TODO: Rename and change types of parameters
+class Blank2Fragment : BaseFragment() {
+
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+    private lateinit var bt_to3: Button
+    private lateinit var bt_to4: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,23 +48,30 @@ class Blank2Fragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank2, container, false)
+
+        val blankBinding = FragmentBlank2Binding.inflate(inflater,container,false)
+        blankBinding.setLifecycleOwner(this)
+        bt_to3 = blankBinding.btTo3
+        bt_to4 = blankBinding.btTo4
+        return blankBinding?.root
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        bt_to3.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.action_blank2Fragment_to_blank3Fragment)
+            print("000000000000000000000000000000000000000000000000000000000000000000")
+        }
+        bt_to4.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.action_blank2Fragment_to_blank4Fragment)
+        }
+    }
+
+
     fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }
-    }
 
     override fun onDetach() {
         super.onDetach()
