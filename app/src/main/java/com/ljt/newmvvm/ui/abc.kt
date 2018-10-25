@@ -1,7 +1,11 @@
 package com.ljt.newmvvm.ui
 
-import android.util.Log
-
 fun main(args: Array<String>) {
-    print("12111111111111111111")
+    val b = Array(3,{
+        it*2
+    })
+
+    b.forEach {
+        print("$it,")
+    }
 }

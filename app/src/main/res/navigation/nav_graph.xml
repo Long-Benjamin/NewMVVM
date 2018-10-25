@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_blank" >
         <action
             android:id="@+id/action_blankFragment_to_blank2Fragment"
-            app:destination="@id/blank2Fragment" />
+            app:destination="@id/blank2Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/blank2Fragment"
@@ -21,19 +25,27 @@
         tools:layout="@layout/fragment_blank2" >
         <action
             android:id="@+id/action_blank2Fragment_to_blank3Fragment"
-            app:destination="@id/blank3Fragment" />
+            app:destination="@id/blank3Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_blank2Fragment_to_blank4Fragment"
-            app:destination="@id/blank4Fragment" />
+            app:destination="@id/blank4Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/blank3Fragment"
         android:name="com.ljt.newmvvm.ui.home.Blank3Fragment"
         android:label="fragment_blank3"
-        tools:layout="@layout/fragment_blank3" />
+        tools:layout="@layout/fragment_blank3"/>
     <fragment
         android:id="@+id/blank4Fragment"
         android:name="com.ljt.newmvvm.ui.home.Blank4Fragment"
         android:label="fragment_blank4"
-        tools:layout="@layout/fragment_blank4" />
+        tools:layout="@layout/fragment_blank4"/>
 </navigation>
