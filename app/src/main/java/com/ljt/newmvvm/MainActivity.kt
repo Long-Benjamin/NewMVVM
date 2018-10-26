@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.ljt.newmvvm.base.http.entity.DataBean
+import com.ljt.newmvvm.ui.home.Blank3Fragment
 import com.ljt.newmvvm.ui.home.BlankFragment
 import timber.log.Timber
 import java.util.*

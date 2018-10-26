@@ -48,4 +48,5 @@
         android:name="com.ljt.newmvvm.ui.home.Blank4Fragment"
         android:label="fragment_blank4"
         tools:layout="@layout/fragment_blank4"/>
+    <deepLink app:uri="www.ljt.com" android:autoVerify="true"/>
 </navigation>
