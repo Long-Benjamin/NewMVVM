@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data />
+    <data>
+        <variable
+            name="blankVM"
+            type="com.ljt.newmvvm.ui.home.viewmodel.BlankViewModel"/>
+    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/img_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:src="@{blankVM.imgUrl}"/>
+
         <TextView
+            android:id="@+id/text_view"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent"
-            android:text="Hello blank fragment 2" />
+            android:background="@android:color/transparent"
+            android:text="@{blankVM.textOne}" />
+        <!--android:text="第二个Fragment" />-->
 
         <Button
             android:id="@+id/bt_to3"

@@ -1,0 +1,12 @@
+
+该demo已在练习Kotlin语法下的MVVM架构模式
+
+1、目前使用了Rxjava2的延时执行方法
+2、使用Navigation组件进行Fragment之间的跳转
+3、使用DeepLink技术结合Navigation，但是尚未经过测试，待完善....
+4、使用Databingding解耦UI和ViewModel
+
+还有其他即将使用的组件和实现的功能
+1、使用Dagger2进行对象注入
+2、Model进行数据加载（网络或本地获取）策略
+3、

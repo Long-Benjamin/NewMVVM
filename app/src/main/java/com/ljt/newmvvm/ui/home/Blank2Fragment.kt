@@ -1,8 +1,11 @@
 package com.ljt.newmvvm.ui.home
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.databinding.DataBindingUtil
+import android.databinding.Observable
 import android.databinding.ViewDataBinding
 import android.net.Uri
 import android.os.Bundle
@@ -11,9 +14,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.fragment.NavHostFragment
 import com.ljt.newmvvm.R
 import com.ljt.newmvvm.databinding.FragmentBlank2Binding
+import com.ljt.newmvvm.ui.home.viewmodel.BlankViewModel
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,6 +42,8 @@ class Blank2Fragment : BaseFragment() {
     private var listener: OnFragmentInteractionListener? = null
     private lateinit var bt_to3: Button
     private lateinit var bt_to4: Button
+    private lateinit var text_view: TextView
+    private lateinit var mTextVM : BlankViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +51,13 @@ class Blank2Fragment : BaseFragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        mTextVM = ViewModelProviders.of(this).get(BlankViewModel::class.java)
+        val textObserver = Observer<String>{
+            text_view.text = it
+        }
+        mTextVM.textOne.observe(this, textObserver)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -53,16 +67,22 @@ class Blank2Fragment : BaseFragment() {
         blankBinding.setLifecycleOwner(this)
         bt_to3 = blankBinding.btTo3
         bt_to4 = blankBinding.btTo4
+        text_view = blankBinding.textView
+//        blankBinding.adapter = mTextVM
+        blankBinding.blankVM = mTextVM
+        blankBinding.setLifecycleOwner(this)
         return blankBinding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         bt_to3.setOnClickListener {
+            mTextVM.textOne.value = "2530"
             NavHostFragment.findNavController(this).navigate(R.id.action_blank2Fragment_to_blank3Fragment)
-            print("000000000000000000000000000000000000000000000000000000000000000000")
         }
         bt_to4.setOnClickListener {
+            mTextVM.textOne.value = "24530"
             NavHostFragment.findNavController(this).navigate(R.id.action_blank2Fragment_to_blank4Fragment)
         }
     }
