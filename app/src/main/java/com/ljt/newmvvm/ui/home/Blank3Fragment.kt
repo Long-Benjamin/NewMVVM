@@ -4,9 +4,12 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.NavUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.NavHostFragment
 import com.ljt.newmvvm.R
 
 
@@ -42,6 +45,14 @@ class Blank3Fragment : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_blank3, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val butTo: Button = view.findViewById(R.id.btn_to1)
+        butTo.setOnClickListener {
+            NavHostFragment.findNavController(this@Blank3Fragment).navigate(R.id.action_blank3Fragment_to_blankFragment)
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

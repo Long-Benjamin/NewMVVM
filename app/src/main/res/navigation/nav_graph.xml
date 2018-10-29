@@ -42,7 +42,15 @@
         android:id="@+id/blank3Fragment"
         android:name="com.ljt.newmvvm.ui.home.Blank3Fragment"
         android:label="fragment_blank3"
-        tools:layout="@layout/fragment_blank3"/>
+        tools:layout="@layout/fragment_blank3">
+        <action
+            android:id="@+id/action_blank3Fragment_to_blankFragment"
+            app:destination="@id/blankFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/blank4Fragment"
         android:name="com.ljt.newmvvm.ui.home.Blank4Fragment"
