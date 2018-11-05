@@ -9,6 +9,11 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="theme_splash_layout" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
     <style name="theme_splash" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowFullscreen">true</item>
