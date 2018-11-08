@@ -1,22 +1,13 @@
 package com.ljt.newmvvm.ui.home
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Context
-import android.databinding.DataBindingUtil
-import android.databinding.Observable
-import android.databinding.ViewDataBinding
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.NavHostFragment
 import com.ljt.newmvvm.R
+import com.ljt.newmvvm.base.ui.BaseFragment
 import com.ljt.newmvvm.databinding.FragmentBlank2Binding
 import com.ljt.newmvvm.ui.home.viewmodel.BlankViewModel
 
@@ -35,18 +26,15 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class Blank2Fragment : BaseFragment() {
+class Blank2Fragment : BaseFragment<FragmentBlank2Binding>() {
+
 
     private var param1: String? = null
     private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
-    private lateinit var bt_to3: Button
-    private lateinit var bt_to4: Button
     private lateinit var text_view: TextView
     private lateinit var mTextVM : BlankViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initParam() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -57,73 +45,25 @@ class Blank2Fragment : BaseFragment() {
             text_view.text = it
         }
         mTextVM.textOne.observe(this, textObserver)
-
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun getLayoutId(): Int = R.layout.fragment_blank2
 
-        val blankBinding = FragmentBlank2Binding.inflate(inflater,container,false)
-        blankBinding.setLifecycleOwner(this)
-        bt_to3 = blankBinding.btTo3
-        bt_to4 = blankBinding.btTo4
-        text_view = blankBinding.textView
-//        blankBinding.adapter = mTextVM
-        blankBinding.blankVM = mTextVM
-        blankBinding.setLifecycleOwner(this)
-        return blankBinding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        bt_to3.setOnClickListener {
-            mTextVM.textOne.value = "2530"
+    override fun initView() {
+        text_view = getBinding().textView
+        getBinding().blankVM = mTextVM
+        getBinding().setLifecycleOwner(this)
+        getBinding().btTo3.setOnClickListener {
+            mTextVM.textOne.value = "000000000"
             NavHostFragment.findNavController(this).navigate(R.id.action_blank2Fragment_to_blank3Fragment)
         }
-        bt_to4.setOnClickListener {
-            mTextVM.textOne.value = "24530"
+        getBinding().btTo4.setOnClickListener {
+            mTextVM.textOne.value = "1111111111"
             NavHostFragment.findNavController(this).navigate(R.id.action_blank2Fragment_to_blank4Fragment)
         }
     }
 
-
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
-
-
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
-    }
-
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Blank2Fragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
                 Blank2Fragment().apply {

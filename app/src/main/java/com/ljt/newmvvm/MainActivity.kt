@@ -1,19 +1,21 @@
 package com.ljt.newmvvm
 
-import android.net.Uri
-import android.support.v7.app.AppCompatActivity
+import android.arch.lifecycle.Observer
+import android.content.Intent
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
+import android.support.v7.app.AppCompatActivity
+import android.view.KeyEvent
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import com.ljt.newmvvm.base.http.entity.DataBean
-import com.ljt.newmvvm.ui.home.Blank3Fragment
-import com.ljt.newmvvm.ui.home.BlankFragment
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.WorkStatus
+import com.ljt.newmvvm.worker.MyWorker
 import timber.log.Timber
 import java.util.*
+
 
 class MainActivity : AppCompatActivity(){
 
@@ -30,8 +32,35 @@ class MainActivity : AppCompatActivity(){
 
     override fun onSupportNavigateUp() = findNavController(R.id.home_nav_host_fragment).navigateUp()
 
+    override fun onStart() {
+        super.onStart()
+        val myWorker = OneTimeWorkRequestBuilder<MyWorker>().build()
+        WorkManager.getInstance().enqueue(myWorker)
+        WorkManager.getInstance().getStatusById(myWorker.id).observe(this, object: Observer<WorkStatus> {
+            override fun onChanged(t: WorkStatus?) {
+                Timber.e("00000000011111111= ${t?.state.toString()}")
+                if (t != null && t.state.isFinished){
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+                }
+            }
+
+        })
+
+
     }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                &&event?.action == KeyEvent.ACTION_DOWN){
+
+            //实现返回键App后台运行，Home键的效果
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_HOME)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+            this.startActivity(intent)
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
 }
