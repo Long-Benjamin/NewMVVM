@@ -1,32 +1,40 @@
 package com.ljt.newmvvm.annotation;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
 /**
- * 注解解析器
+ * Filed 注解处理器
  */
 public class AnnotationProcessor {
 
     /**
      * 真正的注解使用方式，将注解的值注入到对象的成员变量或方法中
-     * @param ktCase
+     * @param target
      */
-    public static void init(KTCase ktCase){
-        Class pClass = ktCase.getClass();
+    public static void init(AnnotationTarget target){
+        Class pClass = target.getClass();
+
         //获取所有的成员变量
-        Field[] fields = pClass.getDeclaredFields();
+        java.lang.reflect.Field[] fields = pClass.getDeclaredFields();
         //获取someFunction()方法
 //        Method method = pClass.getDeclaredMethod("someFunction",String.class,int.class);
-        for (Field field: fields){
-            if (field.isAnnotationPresent(Case.class)){
-                Case name = field.getAnnotation(Case.class);
-                String x = name.value();
-                field.setAccessible(true);
+
+        //遍历获取被@Field注解的
+        for (java.lang.reflect.Field field: fields){
+            if (field.isAnnotationPresent(Field.class)){
+
+                //获取注解中的值
+                Field name = field.getAnnotation(Field.class);
+                String value = name.value();
+
+                // 值为 true 指示反射的对象应该忽略Java语言访问检查，即可以访问Private修饰的属性和方法；
+                // 值为 false 指示反射的对象应该执行Java语言访问检查，即不能访问Private修饰的属性和方法。
+                field.setAccessible(false);
                 try {
-                    field.set(ktCase,x);
-                    //将两个参数注入方法someFunction("注解到方法",10086)
-//                    method.invoke(ktCase,"注解到方法",10086);
+
+                    //将值value设置到类target中
+                    field.set(target,value);
+                    //将两个参数注入方法someFunction(《参数1》,《参数2》)
+                    //method.invoke(target,"参数1",10086);
+
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }

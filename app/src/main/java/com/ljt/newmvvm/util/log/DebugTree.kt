@@ -5,7 +5,9 @@ import timber.log.Timber
 import com.orhanobut.logger.AndroidLogAdapter
 
 
-
+/**
+ * Debug模式时打印日志
+ */
 class DebugTree : Timber.Tree(){
 
     init {

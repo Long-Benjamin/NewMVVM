@@ -22,11 +22,14 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val finalHost = NavHostFragment.create(R.navigation.nav_graph)
         supportFragmentManager.beginTransaction()
                 .replace(R.id.home_nav_host_fragment, finalHost)
                 .setPrimaryNavigationFragment(finalHost) // this is the equivalent to app:defaultNavHost="true"
                 .commit()
+
+        MainApplication.getInstance()
 
     }
 
@@ -49,6 +52,10 @@ class MainActivity : AppCompatActivity(){
 
     }
 
+    /**
+     * 【非常重大的问题】Android Navigation组件，没法判断当前Fragment是否是栈底的，
+     *    也没法代码设置返回到指定Fragment；只能返回键一步步后退
+     */
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 &&event?.action == KeyEvent.ACTION_DOWN){

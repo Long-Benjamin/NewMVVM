@@ -4,9 +4,7 @@ import com.ljt.mvvmdemo.base.type.GankResult
 import com.ljt.newmvvm.base.http.entity.MeizhiBean
 import com.ljt.newmvvm.base.http.entity.Result
 import io.reactivex.Observable
-import retrofit2.http.Field
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 
 interface ApiService {

@@ -29,7 +29,7 @@ abstract class BaseFragment<Binding: ViewDataBinding> : Fragment() {
     }
 
     abstract fun initView()
-
+    //获取跳转参数
     abstract fun initParam()
 
     fun getBinding() : Binding = fragmentBinding

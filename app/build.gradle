@@ -8,6 +8,7 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'androidx.navigation.safeargs'
 
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -67,8 +68,9 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:$test_runner"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$test_espresso"
 
-    // =========== Kotlin
+    // =========== Kotlin 和 协程
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines"
 
     // =========== UI wedgit
     implementation "com.android.support.constraint:constraint-layout:$constraint_layout"
@@ -105,14 +107,16 @@ dependencies {
     implementation "com.google.code.gson:gson:$gson"
 
     // =========== Okhttp3 & Retrofit 2.0
-//    implementation "com.squareup.okhttp3:okhttp:$okhttp3"
+
+    //    implementation "com.squareup.okhttp3:okhttp:$okhttp3"
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3"
 
     // =========== Rxjava2
-//    implementation "io.reactivex.rxjava2:rxjava:$rxjava"
+
+    //    implementation "io.reactivex.rxjava2:rxjava:$rxjava"
     implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid"
     implementation "com.trello.rxlifecycle2:rxlifecycle:$rxjava"
@@ -124,10 +128,10 @@ dependencies {
     implementation 'com.orhanobut:logger:2.2.0'
 
     //============ dagger
-    implementation "com.google.dagger:dagger-android:$dagger"
+    implementation "com.google.dagger:dagger:$dagger"
     implementation "com.google.dagger:dagger-android-support:$dagger"
     // if you use the support libraries
-    kapt "com.google.dagger:dagger-android-processor:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
 
     //============ arouter
     implementation "com.alibaba:arouter-api:$arouter"
@@ -135,7 +139,6 @@ dependencies {
 
     //============ BaseRecyclerViewAdapterHelper
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$base_adapter_helper"
-
 }
 
 

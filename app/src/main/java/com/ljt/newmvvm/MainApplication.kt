@@ -1,22 +1,33 @@
 package com.ljt.newmvvm
 
-import android.app.Application
-import androidx.work.WorkManager
 import com.alibaba.android.arouter.launcher.ARouter
-import com.ljt.newmvvm.base.http.entity.DataBean
 import com.ljt.newmvvm.base.ui.BaseApplication
+import com.ljt.newmvvm.dagger.AppComponent
+import com.ljt.newmvvm.dagger.AppModule
+import com.ljt.newmvvm.dagger.DaggerAppComponent
 import com.ljt.newmvvm.util.log.DebugTree
 import com.ljt.newmvvm.util.log.ReleaseTree
-import io.reactivex.Observable
-
 import timber.log.Timber
+import javax.inject.Singleton
 import kotlin.concurrent.thread
 
+//@Singleton
 class MainApplication : BaseApplication() {
+
+    companion object {
+        private lateinit var INSTANCE: MainApplication
+
+        @JvmStatic fun getInstance() = INSTANCE
+    }
 
     override fun onCreate() {
         super.onCreate()
+        INSTANCE = this
 
+
+        DaggerAppComponent.builder().appModule(AppModule(this)).build().inject(this)
+
+        //为了启动速度，将部分初始化放置到子线程中
         thread(start = true){
             initComponent()
         }

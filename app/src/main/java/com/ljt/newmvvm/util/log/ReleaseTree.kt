@@ -5,7 +5,9 @@ import timber.log.Timber
 import com.orhanobut.logger.AndroidLogAdapter
 
 
-
+/**
+ * 正式打包后不再打印日志
+ */
 class ReleaseTree : Timber.Tree(){
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {

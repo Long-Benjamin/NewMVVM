@@ -23,6 +23,7 @@ open class MyAppExtension private constructor() {
 
         const val MINI_THUMB_SIZE = 100
         private val DECODE_TYPE_GIF = decodeTypeOf(GifDrawable::class.java).lock()
+
         /**
          * 自定方法实现，可直接GlideApp链式结构中使用【屌的飞起】
          */

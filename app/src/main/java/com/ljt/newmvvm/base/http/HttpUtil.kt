@@ -31,7 +31,7 @@ class HttpUtil private constructor(){
     }
 
     /**
-     *
+     *  这段代码可以使用拦截器和@Headers 的信息来动态处理地址
      */
     fun getRetrofit(url: String) : Retrofit{
         val retrofit = Retrofit.Builder()

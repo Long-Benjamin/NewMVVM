@@ -18,9 +18,11 @@ class MyIntereptor : Interceptor{
         val duration = endTime - startTime
         val mediaType = response.body()!!.contentType()
         val content = response.body()!!.string()
+
 //        LogUtil.debug("\n")
 //        LogUtil.debug("》---------Start---------------》")
 //        LogUtil.debug( "| " + request.toString())
+
         val method = request.method()
         if ("POST" == method) {
             val sb = StringBuilder()
@@ -33,8 +35,10 @@ class MyIntereptor : Interceptor{
 //                LogUtil.debug( "| RequestParams:{" + sb.toString() + "}")
             }
         }
+
 //        LogUtil.debug( "| Response:$content")
 //        LogUtil.debug( "《---------End:" + duration + "毫秒---------《")
+
         return response.newBuilder()
                 .body(okhttp3.ResponseBody.create(mediaType, content))
                 .build()
