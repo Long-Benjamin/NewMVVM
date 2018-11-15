@@ -66,5 +66,6 @@ ext{
     arouter_compiler     = '1.2.1'
     base_adapter_helper  = '2.9.42'
     kotlinx_coroutines   = '1.0.0'
+    materialVersion      = '1.0.0-beta01'
 
 }

@@ -2,21 +2,22 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:background">@android:color/transparent</item>
+        <!--<item name="android:background">@android:color/transparent</item>-->
     </style>
 
     <style name="theme_splash_layout" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="android:windowFullscreen">true</item>
+        <!--会导致跳转页面时状态栏抖动-->
+        <!--<item name="android:windowFullscreen">true</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="theme_splash" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="android:windowFullscreen">true</item>
+        <!--同上↑-->
+        <!--<item name="android:windowFullscreen">true</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="android:background">@drawable/splash</item>
     </style>
 

@@ -42,27 +42,27 @@ abstract class BaseFragment<Binding: ViewDataBinding> : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        Timber.e("$TAG ------------------> onStart()")
+//        Timber.e("$TAG ------------------> onStart()")
     }
 
     override fun onResume() {
         super.onResume()
-        Timber.e("$TAG ------------------> onResume()")
+//        Timber.e("$TAG ------------------> onResume()")
     }
 
     override fun onPause() {
         super.onPause()
-        Timber.e("$TAG ------------------> onPause()")
+//        Timber.e("$TAG ------------------> onPause()")
     }
 
     override fun onStop() {
         super.onStop()
-        Timber.e("$TAG ------------------> onStop()")
+//        Timber.e("$TAG ------------------> onStop()")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Timber.e("$TAG ------------------> onDestroy()")
+//        Timber.e("$TAG ------------------> onDestroy()")
     }
 
 }

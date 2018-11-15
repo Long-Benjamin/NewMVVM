@@ -11,7 +11,11 @@ import timber.log.Timber
 import javax.inject.Singleton
 import kotlin.concurrent.thread
 
-//@Singleton
+/**
+ * 【主程序入口】为了提升实际的启动速度：
+ *  1、尽可能将组件的初始化放到子线程中
+ *  2、将必要的组件放在主线程中优先初始化
+ */
 class MainApplication : BaseApplication() {
 
     companion object {
@@ -25,27 +29,18 @@ class MainApplication : BaseApplication() {
         super.onCreate()
         INSTANCE = this
 
-
         DaggerAppComponent.builder().appModule(AppModule(this)).build().inject(this)
 
-        //为了启动速度，将部分初始化放置到子线程中
         thread(start = true){
             initComponent()
         }
 
-        //只有上面线程中的初始化完成后，这个Timber 才能真正的打印日志
+        //子线程中初始化Timber，所以这个日志没有被输出
         Timber.e("000000000000111111= APP启动")
 
     }
 
     private fun initComponent() {
-        
-        //阿里路由初始化
-        if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
-            ARouter.openLog()            // 打印日志
-            ARouter.openDebug()         // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-        }
-        ARouter.init(this)
 
         //日志打印初始化
         if (BuildConfig.DEBUG) {
@@ -53,6 +48,14 @@ class MainApplication : BaseApplication() {
         } else {
             Timber.plant(ReleaseTree())
         }
+
+        //阿里路由初始化
+        if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+            ARouter.openLog()            // 打印日志
+            ARouter.openDebug()         // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        }
+        ARouter.init(this)
+
 
     }
 }
