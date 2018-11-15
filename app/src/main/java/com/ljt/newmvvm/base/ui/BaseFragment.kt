@@ -8,10 +8,13 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import timber.log.Timber
 
 abstract class BaseFragment<Binding: ViewDataBinding> : Fragment() {
 
     private lateinit var fragmentBinding : Binding
+    val TAG = this.javaClass.simpleName
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,5 +39,30 @@ abstract class BaseFragment<Binding: ViewDataBinding> : Fragment() {
 
     /** 获取布局文件ID*/
     abstract fun getLayoutId(): Int
+
+    override fun onStart() {
+        super.onStart()
+        Timber.e("$TAG ------------------> onStart()")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.e("$TAG ------------------> onResume()")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.e("$TAG ------------------> onPause()")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.e("$TAG ------------------> onStop()")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.e("$TAG ------------------> onDestroy()")
+    }
 
 }

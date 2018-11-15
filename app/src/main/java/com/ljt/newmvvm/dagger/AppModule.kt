@@ -20,7 +20,7 @@ class AppModule{
         return application.applicationContext
     }
 
-     @Provides
+    @Provides
     fun provideMainApplication(): MainApplication{
         return application
     }

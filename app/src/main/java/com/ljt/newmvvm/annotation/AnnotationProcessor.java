@@ -27,7 +27,7 @@ public class AnnotationProcessor {
 
                 // 值为 true 指示反射的对象应该忽略Java语言访问检查，即可以访问Private修饰的属性和方法；
                 // 值为 false 指示反射的对象应该执行Java语言访问检查，即不能访问Private修饰的属性和方法。
-                field.setAccessible(false);
+                field.setAccessible(true);
                 try {
 
                     //将值value设置到类target中

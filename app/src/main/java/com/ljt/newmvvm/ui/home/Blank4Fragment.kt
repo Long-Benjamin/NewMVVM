@@ -1,6 +1,7 @@
 package com.ljt.newmvvm.ui.home
 
 import android.os.Bundle
+import androidx.navigation.fragment.NavHostFragment
 import com.ljt.newmvvm.R
 import com.ljt.newmvvm.base.ui.BaseFragment
 import com.ljt.newmvvm.databinding.FragmentBlank4Binding
@@ -24,7 +25,9 @@ class Blank4Fragment : BaseFragment<FragmentBlank4Binding>() {
     }
 
     override fun initView() {
-
+        getBinding().tvFour.setOnClickListener(){
+            NavHostFragment.findNavController(this).popBackStack()
+        }
     }
 
     companion object {

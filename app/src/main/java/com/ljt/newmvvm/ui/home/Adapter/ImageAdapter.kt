@@ -7,5 +7,5 @@ import com.ljt.mvvmdemo.utilities.glides.GlideApp
 
 @BindingAdapter("src")
 fun showImageSrc(view: ImageView, url: String ){
-    GlideApp.with(view).load(url).into(view)
+    GlideApp.with(view).load(url).centerCrop().into(view)
 }

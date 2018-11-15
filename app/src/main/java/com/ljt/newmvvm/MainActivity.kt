@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity(){
                 .commit()
 
         MainApplication.getInstance()
-
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.home_nav_host_fragment).navigateUp()
@@ -53,12 +52,15 @@ class MainActivity : AppCompatActivity(){
     }
 
     /**
-     * 【非常重大的问题】Android Navigation组件，没法判断当前Fragment是否是栈底的，
+     * 【已解决】Android Navigation组件，没法判断当前Fragment是否是栈底的，
      *    也没法代码设置返回到指定Fragment；只能返回键一步步后退
      */
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 &&event?.action == KeyEvent.ACTION_DOWN){
+
+            /**终于攻克了这一步了，哈哈哈哈， 返回键手动回退Fragment，最底层Fragment模拟home键效果*/
+            if (findNavController(R.id.home_nav_host_fragment).popBackStack())return true
 
             //实现返回键App后台运行，Home键的效果
             val intent = Intent(Intent.ACTION_MAIN)

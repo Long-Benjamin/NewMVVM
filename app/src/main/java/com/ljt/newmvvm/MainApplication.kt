@@ -17,7 +17,8 @@ class MainApplication : BaseApplication() {
     companion object {
         private lateinit var INSTANCE: MainApplication
 
-        @JvmStatic fun getInstance() = INSTANCE
+        @JvmStatic fun getInstance()  = INSTANCE
+
     }
 
     override fun onCreate() {
