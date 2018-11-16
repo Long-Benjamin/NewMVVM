@@ -1,6 +1,5 @@
 package com.ljt.newmvvm.base.ui
 
-import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -18,6 +17,7 @@ abstract class BaseFragment<Binding: ViewDataBinding> : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Timber.e("$TAG ------------------> onCreate()")
         initParam()
     }
 
@@ -42,27 +42,27 @@ abstract class BaseFragment<Binding: ViewDataBinding> : Fragment() {
 
     override fun onStart() {
         super.onStart()
-//        Timber.e("$TAG ------------------> onStart()")
+        Timber.e("$TAG ------------------> onStart()")
     }
 
     override fun onResume() {
         super.onResume()
-//        Timber.e("$TAG ------------------> onResume()")
+        Timber.e("$TAG ------------------> onResume()")
     }
 
     override fun onPause() {
         super.onPause()
-//        Timber.e("$TAG ------------------> onPause()")
+        Timber.e("$TAG ------------------> onPause()")
     }
 
     override fun onStop() {
         super.onStop()
-//        Timber.e("$TAG ------------------> onStop()")
+        Timber.e("$TAG ------------------> onStop()")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-//        Timber.e("$TAG ------------------> onDestroy()")
+        Timber.e("$TAG ------------------> onDestroy()")
     }
 
 }

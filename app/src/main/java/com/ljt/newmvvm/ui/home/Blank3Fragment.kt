@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import com.ljt.newmvvm.R
 import com.ljt.newmvvm.base.ui.BaseFragment
+import com.ljt.newmvvm.base.ui.MainNavigationFragment
 import com.ljt.newmvvm.databinding.FragmentBlank3Binding
 
 

@@ -15,8 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".ui.splash.SplashActivity"
+        <activity
+            android:name=".ui.splash.SplashActivity"
             android:theme="@style/theme_splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,21 +24,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.home.MainActivity"
+        <activity
+            android:name=".ui.home.MainActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <!--这里是用于DeepLink测试用的-->
+                <!-- 这里是用于DeepLink测试用的 -->
                 <data
                     android:host="www.ljt.com"
                     android:pathPrefix="/long"
                     android:scheme="http" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".ui.main.HomeActivity"></activity>
     </application>
 
 </manifest>

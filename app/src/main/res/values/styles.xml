@@ -21,4 +21,9 @@
         <item name="android:background">@drawable/splash</item>
     </style>
 
+    <style name="AppTheme.TranslucentNavigation" parent="AppTheme">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
 </resources>

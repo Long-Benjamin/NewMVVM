@@ -8,6 +8,17 @@ import kotlin.concurrent.thread
 
 class MyWorker : Worker() {
 
+//    启动方式
+/* val myWorker = OneTimeWorkRequestBuilder<MyWorker>().build()
+       WorkManager.getInstance().enqueue(myWorker)
+       WorkManager.getInstance().getStatusById(myWorker.id).observe(this, object: Observer<WorkStatus> {
+           override fun onChanged(t: WorkStatus?) {
+               if (t != null && t.state.isFinished){
+
+               }
+           }
+
+       })*/
     override fun doWork(): Result {
 
         thread {

@@ -23,7 +23,7 @@ class SplashModel : ViewModel(){
      * 业务逻辑代码转移到这里,【不需要担心内存泄漏，MutableLiveData有生命周期感知】
      */
     fun toNext(){
-        Observable.timer(2, TimeUnit.SECONDS)
+        Observable.timer(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {

@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.widget.TextView
 import androidx.navigation.fragment.NavHostFragment
+import com.ljt.mvvmdemo.utilities.glides.GlideApp
 import com.ljt.newmvvm.R
 import com.ljt.newmvvm.base.ui.BaseFragment
 import com.ljt.newmvvm.databinding.FragmentBlank2Binding
 import com.ljt.newmvvm.ui.home.viewmodel.BlankViewModel
+import kotlinx.android.synthetic.main.fragment_blank2.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,13 +28,25 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class Blank2Fragment : BaseFragment<FragmentBlank2Binding>() {
+class Blank2Fragment : BaseFragment<FragmentBlank2Binding>(){
 
 
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var text_view: TextView
     private lateinit var mTextVM : BlankViewModel
+
+
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+                Blank2Fragment().apply {
+                    arguments = Bundle().apply {
+                        putString(ARG_PARAM1, param1)
+                        putString(ARG_PARAM2, param2)
+                    }
+                }
+    }
 
     override fun initParam() {
         arguments?.let {
@@ -63,14 +77,9 @@ class Blank2Fragment : BaseFragment<FragmentBlank2Binding>() {
         }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                Blank2Fragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
+
+    override fun onDestroyView() {
+        GlideApp.with(img_view).clear(img_view)
+        super.onDestroyView()
     }
 }
