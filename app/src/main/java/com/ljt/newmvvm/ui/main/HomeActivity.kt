@@ -23,6 +23,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var fragmentsManager: FragmentsManager
     private lateinit var blankFragment: BlankFragment
+    private lateinit var homeFragment: HomeFragment
     private lateinit var blank2Fragment: Blank2Fragment
     private lateinit var blank3Fragment: Blank3Fragment
     private lateinit var blank4Fragment: Blank4Fragment
@@ -38,6 +39,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initFragment() {
         fragmentsManager = FragmentsManager(this@HomeActivity)
+        homeFragment = HomeFragment.newInstance("0","0")
         blankFragment = BlankFragment.newInstance("0","0")
         blank2Fragment = Blank2Fragment.newInstance("0","0")
         blank3Fragment = Blank3Fragment.newInstance("0","0")
@@ -86,7 +88,8 @@ class HomeActivity : AppCompatActivity() {
             if(wasSelected)false
 
             when(position){
-                0 -> consume { fragmentsManager.addFragment(blankFragment) }
+                0 -> consume { fragmentsManager.addFragment(homeFragment) }
+//                0 -> consume { fragmentsManager.addFragment(blankFragment) }
                 1 -> consume { fragmentsManager.addFragment(blank2Fragment)}
                 2 -> consume { fragmentsManager.addFragment(blank3Fragment)}
                 3 -> consume { fragmentsManager.addFragment(blank4Fragment)}
