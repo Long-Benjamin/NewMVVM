@@ -50,7 +50,9 @@ class MainActivity : AppCompatActivity(){
     }
 
     /**
-     * 【存在问题】也没法代码设置返回到指定Fragment，只能返回键一步步后退？
+     * 【已解决】也没法代码设置返回到指定Fragment，只能返回键一步步后退？
+     *  假如现在是fragment_1 -> 2 -> 3 -> 4 跳转，要想在fragment_4直接返回1，并将2、3 推出栈，
+     *  可在action中使用属性 app:popUpTo="@id/fragment_1"，即可实现效果
      */
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK

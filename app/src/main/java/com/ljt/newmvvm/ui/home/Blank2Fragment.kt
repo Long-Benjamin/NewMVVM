@@ -68,11 +68,11 @@ class Blank2Fragment : BaseFragment<FragmentBlank2Binding>(){
         getBinding().blankVM = mTextVM
         getBinding().setLifecycleOwner(this)
         getBinding().btTo3.setOnClickListener {
-            mTextVM.textOne.value = "000000000"
+            mTextVM.textOne.value = "使用ViewModel来保存数据，跳转至页面3返回时可见"
             NavHostFragment.findNavController(this).navigate(R.id.action_blank2Fragment_to_blank3Fragment)
         }
         getBinding().btTo4.setOnClickListener {
-            mTextVM.textOne.value = "1111111111"
+            mTextVM.textOne.value = "使用ViewModel来保存数据，跳转至页面4返回时可见"
             NavHostFragment.findNavController(this).navigate(R.id.action_blank2Fragment_to_blank4Fragment)
         }
     }

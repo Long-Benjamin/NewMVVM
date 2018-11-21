@@ -9,15 +9,19 @@
         tools:context=".ui.home.BlankFragment">
 
         <TextView
+            android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="20dp"
+            android:lineSpacingExtra="10dp"
             android:text="@string/hello_blank_fragment" />
 
         <Button
             android:id="@+id/bt_jump"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="20dp"
             android:text="跳转第二个Fragment"/>
 
     </FrameLayout>

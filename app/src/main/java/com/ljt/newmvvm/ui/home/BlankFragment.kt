@@ -5,6 +5,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.ljt.newmvvm.R
 import com.ljt.newmvvm.base.ui.BaseFragment
 import com.ljt.newmvvm.databinding.FragmentBlankBinding
+import kotlinx.android.synthetic.main.fragment_blank.*
 
 
 private const val ARG_PARAM1 = "param1"
@@ -16,6 +17,9 @@ class BlankFragment : BaseFragment<FragmentBlankBinding>() {
 
     override fun initView() {
         getBinding().btJump.setOnClickListener {
+            tv_description.let {
+                it.text = "如果跳转返回过来还能看到这条数据，说明跳转后对页面的UI没有影响!"
+            }
             NavHostFragment.findNavController(this).navigate(R.id.action_blankFragment_to_blank2Fragment)
         }
     }

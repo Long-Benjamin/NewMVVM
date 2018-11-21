@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">NewMVVM</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="hello_blank_fragment">该部分主要在于测试Navigation的跳转和回退，
+        \n页面2调到页面四时设置（app:popUpTo=""@id/fragment_1"）属性，返回时直接到第一个Fragment页面,同时将页面2抛出栈。</string>
 
 
     <string name="home_nav_home">Home</string>

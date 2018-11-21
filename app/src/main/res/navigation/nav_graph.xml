@@ -16,7 +16,8 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/blank2Fragment"
@@ -36,7 +37,8 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/blankFragment"/>
     </fragment>
     <fragment
         android:id="@+id/blank3Fragment"
@@ -49,12 +51,11 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/blank4Fragment"
         android:name="com.ljt.newmvvm.ui.home.Blank4Fragment"
         android:label="fragment_blank4"
         tools:layout="@layout/fragment_blank4"/>
-    <deepLink app:uri="www.ljt.com" android:autoVerify="true"/>
 </navigation>
